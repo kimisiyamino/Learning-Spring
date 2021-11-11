@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New person</title>
+</head>
+<body>
+    <h1>New person: </h1>
+
+    <form th:method="post" th:action="@{/people}" th:object="${person}">
+        <label for="name">Name: </label>
+        <input type="text" th:field="*{name}" id="name">
+        <br/>
+        <input type="submit" value="Create">
+    </form>
+
+    <a class="backLink" th:href="@{/people}">Back</a>
+</body>
+</html>

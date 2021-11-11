@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+    <style>
+        body{
+            background: thistle;
+        }
+
+        .backLink{
+            text-align: right;
+        }
+
+        .div{
+            font-weight: bold;
+        }
+        .divID{
+            font-weight: bold;
+            font-style: italic;
+            color: black;
+        }
+        .divNAME{
+            font-weight: bold;
+            font-style: italic;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="div">ID: </div> <div class="divID" th:text="${person.getId()}"/>
+    <br/>
+    <div class="div">NAME: </div><div class="divNAME" th:text="${person.getName()}"/>
+    <br/>
+    <div class="div">AGE: </div><div class="divAge" th:text="${person.getAge()}"/>
+    <br/>
+    <div class="div">Email: </div><div class="divNAME" th:text="${person.getEmail()}"/>
+
+    <br/>
+    <hr/>
+
+    <a th:href="@{/people/{id}/edit(id=${person.getId()})}">edit</a>
+    <form th:method="delete" th:action="@{/people/{id}(id=${person.getId()})}">
+        <input type="submit" value="delete">
+
+    </form>
+    <a class="backLink" th:href="@{/people}">Back</a>
+
+
+
+</body>
+</html>
+
+

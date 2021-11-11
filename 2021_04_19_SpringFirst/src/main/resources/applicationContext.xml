@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- прочесть property   -->
+    <context:property-placeholder location="classpath:prop.properties"/>
+
+    <!--   Bean - типа как объект -->
+    <!--   -->
+    <bean id="musicBeanClassic"
+          class="com.eleonoralion.spring.ClassicalMusic"
+          init-method="init"
+          destroy-method="destroy">
+    </bean>
+
+    <bean id="musicBeanRock"
+          class="com.eleonoralion.spring.RockMusic"
+          scope="prototype"
+          init-method="init"
+          destroy-method="destroy"
+    >
+    </bean>
+
+    <bean id="musicBeanRap"
+          class="com.eleonoralion.spring.RapMusic"
+          init-method="init"
+          destroy-method="destroy">
+    </bean>
+
+
+    <!-- DI Конструктор -->
+    <bean id="musicPlayer)"
+          class="com.eleonoralion.spring.MusicPlayer"
+          init-method="init"
+          destroy-method="destroy">
+        <constructor-arg ref="musicBeanRock"/>
+    </bean>
+
+    <!-- DI setter, и внедрение значения -->
+    <bean id="musicPlayer2"
+          class="com.eleonoralion.spring.MusicPlayer"
+          init-method="init"
+          destroy-method="destroy">
+        <property name="music" ref="musicBeanRock"/>
+        <property name="volume" value="100"/>
+    </bean>
+
+    <!--  внедрение значения из properties -->
+    <bean id="musicPlayer3"
+          class="com.eleonoralion.spring.MusicPlayer"
+          init-method="init"
+          destroy-method="destroy">
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
+
+    <!--  внедрение листа -->
+    <bean id="musicPlayer4"
+          class="com.eleonoralion.spring.MusicPlayer"
+          init-method="init"
+          destroy-method="destroy"
+            >
+        <property name="allMusic">
+            <list>
+                <ref bean="musicBeanClassic"/>
+                <ref bean="musicBeanRap"/>
+                <ref bean="musicBeanRock"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="musicPlayer"
+          class="com.eleonoralion.spring.MusicPlayer">
+        <property name="allMusic">
+            <list>
+                <value>100</value>
+                <value>200</value>
+                <value>300</value>
+                <value>400</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

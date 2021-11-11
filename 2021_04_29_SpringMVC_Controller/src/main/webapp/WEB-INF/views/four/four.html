@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>FOUR</title>
+</head>
+<body>
+    <h1>Test parameters</h1>
+    <!-- <p th:each="${items}"/> -->
+
+    <tr th:each="instance : ${params}">
+        <td th:text="${instance.key}">keyvalue</td>
+        <td th:text="${instance.value}">num</td>
+    </tr>
+</body>
+</html>

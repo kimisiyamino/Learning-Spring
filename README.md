@@ -36,9 +36,12 @@ Screenshots:
 
 **БД:** **List**< _Person_ > people
 
+---
+
 Screenshots:
 
 **/people**
+
 ![main](2021_05_08_SpringCrudSC01.png)
 ![crudpages](2021_05_08_SpringCrudSC02.png)
 
